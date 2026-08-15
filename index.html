@@ -30,11 +30,13 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--n-z-soft);outline-offset:3px;border-radius:2px}
 
 /* 상단 바 */
-.bar{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+.bar{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:20px;flex-wrap:nowrap;
   padding:14px 28px;background:rgba(15,18,22,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
 .mark{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
 .mark b{color:var(--text);font-weight:700}
-.bar nav{display:flex;gap:22px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.bar nav{display:flex;gap:17px;margin-left:auto;min-width:0;padding-right:24px;overflow-x:auto;scrollbar-width:none;
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 22px),transparent 100%);
+  mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 22px),transparent 100%)}
 .bar nav::-webkit-scrollbar{display:none}
 .bar nav a{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--dim);
   text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;white-space:nowrap;transition:color .18s,border-color .18s}
@@ -148,8 +150,8 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
 }
 @media(max-width:640px){
   main{padding:48px 18px 96px}
-  .bar{padding:11px 18px;gap:14px}
-  .bar nav{width:100%;margin-left:0;order:3;gap:18px}
+  .bar{padding:11px 18px;gap:14px;flex-wrap:wrap}
+  .bar nav{width:100%;margin-left:0;order:3;gap:18px;padding-right:20px}
   .hero-in{padding:44px 18px 48px}
   .stats{gap:14px 26px}
   body.pres .slide.current{padding:12px 12px 66px}
@@ -170,6 +172,11 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <div class="mark"><b>Minsong Kim</b> · Portfolio</div>
   <nav id="nav"><a href="#s1" data-section="overview">Overview</a>
 <a href="#s4" data-section="pipeline">Pipeline</a>
+<a href="#s5" data-section="pose">2-1 Pose</a>
+<a href="#s6" data-section="recon">2-2 Reconstruction</a>
+<a href="#s18" data-section="adeval">2-3 AD Eval</a>
+<a href="#s20" data-section="human">2-4 Human Asset</a>
+<a href="#s26" data-section="novel">2-5 Novel-view</a>
 <a href="#s31" data-section="future">Future Work</a>
 <a href="#s36" data-section="appendix">Appendix</a></nav>
   <button class="pres-btn" id="presToggle">발표 모드</button>
@@ -187,7 +194,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
         closed-loop으로 평가하는 파이프라인까지 확장한 연구 기록입니다.
       </p>
       <div class="stats">
-        <div class="stat"><b>51</b><span>Slides</span></div>
+        <div class="stat"><b>50</b><span>Slides</span></div>
         <div class="stat"><b>38</b><span>Result videos</span></div>
         <div class="stat"><b>69%</b><span>Normal error &darr;</span></div>
         <div class="stat"><b>6</b><span>Camera rig</span></div>
@@ -237,25 +244,24 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
 <button class="tick has-video" data-n="30" title="30 · 2-5. Novel-view Rendering"><span></span></button>
 <button class="tick group-start" data-n="31" title="31 · 3. Future Research Direction"><span></span></button>
 <button class="tick" data-n="32" title="32 · 3. Future Research Direction"><span></span></button>
-<button class="tick" data-n="33" title="33 · 3. Future Research Direction"><span></span></button>
-<button class="tick" data-n="34" title="34 · 3. Future Research Direction"><span></span></button>
-<button class="tick has-video" data-n="35" title="35 · 3. Future Research Direction"><span></span></button>
-<button class="tick group-start" data-n="36" title="36 · Appendix 표지"><span></span></button>
-<button class="tick group-start" data-n="37" title="37 · A. HUGSIM"><span></span></button>
-<button class="tick has-video" data-n="38" title="38 · A. HUGSIM"><span></span></button>
-<button class="tick" data-n="39" title="39 · A. HUGSIM"><span></span></button>
-<button class="tick group-start" data-n="40" title="40 · B. HUGSIM / DrivoR 연동"><span></span></button>
-<button class="tick has-video" data-n="41" title="41 · B. HUGSIM / DrivoR 연동"><span></span></button>
-<button class="tick group-start" data-n="42" title="42 · C. Hierarchical 3DGS"><span></span></button>
-<button class="tick has-video" data-n="43" title="43 · C. Hierarchical 3DGS"><span></span></button>
-<button class="tick group-start" data-n="44" title="44 · D. VLA 라스트마일 배송 로봇"><span></span></button>
-<button class="tick" data-n="45" title="45 · D. VLA 라스트마일 배송 로봇"><span></span></button>
-<button class="tick has-video" data-n="46" title="46 · D. VLA 라스트마일 배송 로봇"><span></span></button>
-<button class="tick group-start" data-n="47" title="47 · E. Dataset 구축 파이프라인"><span></span></button>
-<button class="tick has-video" data-n="48" title="48 · E. Dataset 구축 파이프라인"><span></span></button>
-<button class="tick" data-n="49" title="49 · E. Dataset 구축 파이프라인"><span></span></button>
-<button class="tick group-start" data-n="50" title="50 · F. 자작자동차 대회"><span></span></button>
-<button class="tick has-video" data-n="51" title="51 · F. 자작자동차 대회"><span></span></button></div>
+<button class="tick" data-n="34" title="33 · 3. Future Research Direction"><span></span></button>
+<button class="tick has-video" data-n="35" title="34 · 3. Future Research Direction"><span></span></button>
+<button class="tick group-start" data-n="36" title="35 · Appendix 표지"><span></span></button>
+<button class="tick group-start" data-n="37" title="36 · A. HUGSIM"><span></span></button>
+<button class="tick has-video" data-n="38" title="37 · A. HUGSIM"><span></span></button>
+<button class="tick" data-n="39" title="38 · A. HUGSIM"><span></span></button>
+<button class="tick group-start" data-n="40" title="39 · B. HUGSIM / DrivoR 연동"><span></span></button>
+<button class="tick has-video" data-n="41" title="40 · B. HUGSIM / DrivoR 연동"><span></span></button>
+<button class="tick group-start" data-n="42" title="41 · C. Hierarchical 3DGS"><span></span></button>
+<button class="tick has-video" data-n="43" title="42 · C. Hierarchical 3DGS"><span></span></button>
+<button class="tick group-start" data-n="44" title="43 · D. VLA 라스트마일 배송 로봇"><span></span></button>
+<button class="tick" data-n="45" title="44 · D. VLA 라스트마일 배송 로봇"><span></span></button>
+<button class="tick has-video" data-n="46" title="45 · D. VLA 라스트마일 배송 로봇"><span></span></button>
+<button class="tick group-start" data-n="47" title="46 · E. Dataset 구축 파이프라인"><span></span></button>
+<button class="tick has-video" data-n="48" title="47 · E. Dataset 구축 파이프라인"><span></span></button>
+<button class="tick" data-n="49" title="48 · E. Dataset 구축 파이프라인"><span></span></button>
+<button class="tick group-start" data-n="50" title="49 · F. 자작자동차 대회"><span></span></button>
+<button class="tick has-video" data-n="51" title="50 · F. 자작자동차 대회"><span></span></button></div>
 </aside>
 
 <main id="main">
@@ -292,7 +298,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">04</span><span class="cap">COLMAP → QGIS/MeshLab → HUGSIM 으로 이어지는 전체 파이프라인</span><button class="playall" data-n="4">영상 4개 동시 재생</button></figcaption>
 </figure>
 <h2 class="group" id="g5"><em>05</em>2-1. COLMAP Pose Estimation</h2>
-<figure class="slide" id="s5" data-n="5" data-section="pipeline" data-group="2-1. COLMAP Pose Estimation">
+<figure class="slide" id="s5" data-n="5" data-section="pose" data-group="2-1. COLMAP Pose Estimation">
   <div class="stage">
     <img src="assets/slides/05.jpg" alt="슬라이드 5: 6-camera rig 구성과 GPS 정렬로 multi-camera pose 신뢰도 개선" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -300,7 +306,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">05</span><span class="cap">6-camera rig 구성과 GPS 정렬로 multi-camera pose 신뢰도 개선</span></figcaption>
 </figure>
 <h2 class="group" id="g6"><em>06</em>2-2. Scene Reconstruction 품질 개선</h2>
-<figure class="slide" id="s6" data-n="6" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s6" data-n="6" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/06.jpg" alt="슬라이드 6: Depth-supervised ground fitting과 sphere 기반 sky fitting" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid crop" style="left:54.849%;top:30.557%;width:20.556%;height:25.543%;--vw:188.388%;--vh:112.826%;--vl:-49.301%;--vt:-11.972%" data-src="assets/video/media6.mp4" data-ctl="0" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
@@ -308,7 +314,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">06</span><span class="cap">Depth-supervised ground fitting과 sphere 기반 sky fitting</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
 
-<figure class="slide" id="s7" data-n="7" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s7" data-n="7" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/07.jpg" alt="슬라이드 7: Ground / Sky 모델링 적용 전후 렌더링 비교" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -316,7 +322,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">07</span><span class="cap">Ground / Sky 모델링 적용 전후 렌더링 비교</span></figcaption>
 </figure>
 
-<figure class="slide" id="s8" data-n="8" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s8" data-n="8" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/08.jpg" alt="슬라이드 8: 기존 3DGS의 depth·normal map 기하 부정확성 문제 정의" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -324,7 +330,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">08</span><span class="cap">기존 3DGS의 depth·normal map 기하 부정확성 문제 정의</span></figcaption>
 </figure>
 
-<figure class="slide" id="s9" data-n="9" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s9" data-n="9" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/09.jpg" alt="슬라이드 9: UniDepth 기반 depth supervision을 scene train에 적용" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -332,7 +338,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">09</span><span class="cap">UniDepth 기반 depth supervision을 scene train에 적용</span></figcaption>
 </figure>
 
-<figure class="slide" id="s10" data-n="10" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s10" data-n="10" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/10.jpg" alt="슬라이드 10: Metric3D 기반 normal supervision과 loss 정의" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:76.597%;top:76.259%;width:18.726%;height:18.441%" data-src="assets/video/media7.mp4" data-ctl="0" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:76.666%;top:56.180%;width:18.658%;height:18.658%" data-src="assets/video/media8.mp4" data-ctl="0" aria-label="영상 2 재생"><i class="badge">&#9654;</i></button>
@@ -340,7 +346,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">10</span><span class="cap">Metric3D 기반 normal supervision과 loss 정의</span><button class="playall" data-n="10">영상 2개 동시 재생</button></figcaption>
 </figure>
 
-<figure class="slide" id="s11" data-n="11" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s11" data-n="11" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/11.jpg" alt="슬라이드 11: 실 수집 데이터 — supervision 조합별 렌더링 비교 (1)" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -348,7 +354,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">11</span><span class="cap">실 수집 데이터 — supervision 조합별 렌더링 비교 (1)</span></figcaption>
 </figure>
 
-<figure class="slide" id="s12" data-n="12" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s12" data-n="12" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/12.jpg" alt="슬라이드 12: 실 수집 데이터 — supervision 조합별 렌더링 비교 (2)" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -356,7 +362,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">12</span><span class="cap">실 수집 데이터 — supervision 조합별 렌더링 비교 (2)</span></figcaption>
 </figure>
 
-<figure class="slide" id="s13" data-n="13" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s13" data-n="13" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/13.jpg" alt="슬라이드 13: NuScenes — RGB / Normal / Depth map 비교 (1)" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -364,7 +370,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">13</span><span class="cap">NuScenes — RGB / Normal / Depth map 비교 (1)</span></figcaption>
 </figure>
 
-<figure class="slide" id="s14" data-n="14" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s14" data-n="14" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/14.jpg" alt="슬라이드 14: NuScenes — RGB / Normal / Depth map 비교 (2)" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -372,7 +378,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">14</span><span class="cap">NuScenes — RGB / Normal / Depth map 비교 (2)</span></figcaption>
 </figure>
 
-<figure class="slide" id="s15" data-n="15" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s15" data-n="15" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/15.jpg" alt="슬라이드 15: NuScenes scene-0038·0051 정량 지표: normal 오차 최대 69% 개선" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -380,7 +386,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">15</span><span class="cap">NuScenes scene-0038·0051 정량 지표: normal 오차 최대 69% 개선</span></figcaption>
 </figure>
 
-<figure class="slide" id="s16" data-n="16" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s16" data-n="16" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/16.jpg" alt="슬라이드 16: 실 수집 데이터 — normal map 재구성 영상 비교 (1)" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:0.397%;top:38.330%;width:31.566%;height:31.566%" data-src="assets/video/media9.mp4" data-ctl="0" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:66.864%;top:22.546%;width:31.566%;height:31.566%" data-src="assets/video/media10.mp4" data-ctl="0" aria-label="영상 2 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:33.432%;top:61.632%;width:31.566%;height:31.566%" data-src="assets/video/media11.mp4" data-ctl="0" aria-label="영상 3 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:33.432%;top:22.585%;width:31.566%;height:31.566%" data-src="assets/video/media12.mp4" data-ctl="0" aria-label="영상 4 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:66.864%;top:61.632%;width:31.566%;height:31.566%" data-src="assets/video/media13.mp4" data-ctl="0" aria-label="영상 5 재생"><i class="badge">&#9654;</i></button>
@@ -388,7 +394,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">16</span><span class="cap">실 수집 데이터 — normal map 재구성 영상 비교 (1)</span><button class="playall" data-n="16">영상 5개 동시 재생</button></figcaption>
 </figure>
 
-<figure class="slide" id="s17" data-n="17" data-section="pipeline" data-group="2-2. Scene Reconstruction 품질 개선">
+<figure class="slide" id="s17" data-n="17" data-section="recon" data-group="2-2. Scene Reconstruction 품질 개선">
   <div class="stage">
     <img src="assets/slides/17.jpg" alt="슬라이드 17: 실 수집 데이터 — normal map 재구성 영상 비교 (2)" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:1.528%;top:37.783%;width:31.566%;height:31.566%" data-src="assets/video/media14.mp4" data-ctl="0" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:34.161%;top:22.593%;width:31.645%;height:31.645%" data-src="assets/video/media15.mp4" data-ctl="0" aria-label="영상 2 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:66.903%;top:22.672%;width:31.566%;height:31.566%" data-src="assets/video/media16.mp4" data-ctl="0" aria-label="영상 3 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:34.161%;top:62.454%;width:31.645%;height:31.645%" data-src="assets/video/media17.mp4" data-ctl="0" aria-label="영상 4 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:66.872%;top:62.280%;width:31.566%;height:31.566%" data-src="assets/video/media18.mp4" data-ctl="0" aria-label="영상 5 재생"><i class="badge">&#9654;</i></button>
@@ -396,7 +402,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">17</span><span class="cap">실 수집 데이터 — normal map 재구성 영상 비교 (2)</span><button class="playall" data-n="17">영상 5개 동시 재생</button></figcaption>
 </figure>
 <h2 class="group" id="g18"><em>18</em>2-3. AD Algorithm 평가 확장</h2>
-<figure class="slide" id="s18" data-n="18" data-section="pipeline" data-group="2-3. AD Algorithm 평가 확장">
+<figure class="slide" id="s18" data-n="18" data-section="adeval" data-group="2-3. AD Algorithm 평가 확장">
   <div class="stage">
     <img src="assets/slides/18.jpg" alt="슬라이드 18: LTF / UniAD / VAD에 DrivoR을 추가해 평가 파이프라인 확장" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:53.853%;top:63.932%;width:43.089%;height:28.726%" data-src="assets/video/media19.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:3.822%;top:63.932%;width:43.089%;height:28.726%" data-src="assets/video/media20.mp4" data-ctl="1" aria-label="영상 2 재생"><i class="badge">&#9654;</i></button>
@@ -404,7 +410,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">18</span><span class="cap">LTF / UniAD / VAD에 DrivoR을 추가해 평가 파이프라인 확장</span><button class="playall" data-n="18">영상 2개 동시 재생</button></figcaption>
 </figure>
 
-<figure class="slide" id="s19" data-n="19" data-section="pipeline" data-group="2-3. AD Algorithm 평가 확장">
+<figure class="slide" id="s19" data-n="19" data-section="adeval" data-group="2-3. AD Algorithm 평가 확장">
   <div class="stage">
     <img src="assets/slides/19.jpg" alt="슬라이드 19: HUGSIM 내 AD algorithm 연동 및 trajectory 시각화" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -412,7 +418,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">19</span><span class="cap">HUGSIM 내 AD algorithm 연동 및 trajectory 시각화</span></figcaption>
 </figure>
 <h2 class="group" id="g20"><em>20</em>2-4. Dynamic Human Asset</h2>
-<figure class="slide" id="s20" data-n="20" data-section="pipeline" data-group="2-4. Dynamic Human Asset">
+<figure class="slide" id="s20" data-n="20" data-section="human" data-group="2-4. Dynamic Human Asset">
   <div class="stage">
     <img src="assets/slides/20.jpg" alt="슬라이드 20: HUGS 기반 human Gaussian을 HUGSIM dynamic asset으로 통합" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -420,7 +426,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">20</span><span class="cap">HUGS 기반 human Gaussian을 HUGSIM dynamic asset으로 통합</span></figcaption>
 </figure>
 
-<figure class="slide" id="s21" data-n="21" data-section="pipeline" data-group="2-4. Dynamic Human Asset">
+<figure class="slide" id="s21" data-n="21" data-section="human" data-group="2-4. Dynamic Human Asset">
   <div class="stage">
     <img src="assets/slides/21.jpg" alt="슬라이드 21: 학습한 HUGS human asset — Bike / Citron / Seattle" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid crop" style="left:19.261%;top:36.396%;width:14.895%;height:50.436%;--vw:272.814%;--vh:179.048%;--vl:-92.459%;--vt:-41.754%" data-src="assets/video/media21.mp4" data-ctl="0" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button><button class="vid crop" style="left:39.899%;top:36.238%;width:17.309%;height:50.753%;--vw:214.781%;--vh:162.774%;--vl:-52.939%;--vt:-48.868%" data-src="assets/video/media22.mp4" data-ctl="0" aria-label="영상 2 재생"><i class="badge">&#9654;</i></button><button class="vid crop" style="left:62.950%;top:37.764%;width:14.895%;height:49.068%;--vw:259.983%;--vh:175.380%;--vl:-91.418%;--vt:-53.165%" data-src="assets/video/media23.mp4" data-ctl="0" aria-label="영상 3 재생"><i class="badge">&#9654;</i></button>
@@ -428,7 +434,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">21</span><span class="cap">학습한 HUGS human asset — Bike / Citron / Seattle</span><button class="playall" data-n="21">영상 3개 동시 재생</button></figcaption>
 </figure>
 
-<figure class="slide" id="s22" data-n="22" data-section="pipeline" data-group="2-4. Dynamic Human Asset">
+<figure class="slide" id="s22" data-n="22" data-section="human" data-group="2-4. Dynamic Human Asset">
   <div class="stage">
     <img src="assets/slides/22.jpg" alt="슬라이드 22: HUGSIM GUI에 human Gaussian asset 임포트 (scene-0411)" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:-0.017%;top:18.526%;width:100.000%;height:74.421%" data-src="assets/video/media24.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
@@ -436,7 +442,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">22</span><span class="cap">HUGSIM GUI에 human Gaussian asset 임포트 (scene-0411)</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
 
-<figure class="slide" id="s23" data-n="23" data-section="pipeline" data-group="2-4. Dynamic Human Asset">
+<figure class="slide" id="s23" data-n="23" data-section="human" data-group="2-4. Dynamic Human Asset">
   <div class="stage">
     <img src="assets/slides/23.jpg" alt="슬라이드 23: Closed-loop 평가 — asset 없는 경우 (scene-0051)" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:0.000%;top:23.263%;width:100.000%;height:66.667%" data-src="assets/video/media25.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
@@ -444,7 +450,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">23</span><span class="cap">Closed-loop 평가 — asset 없는 경우 (scene-0051)</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
 
-<figure class="slide" id="s24" data-n="24" data-section="pipeline" data-group="2-4. Dynamic Human Asset">
+<figure class="slide" id="s24" data-n="24" data-section="human" data-group="2-4. Dynamic Human Asset">
   <div class="stage">
     <img src="assets/slides/24.jpg" alt="슬라이드 24: Closed-loop 평가 — human asset 배치 후 (scene-0051)" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:0.000%;top:23.163%;width:100.000%;height:66.667%" data-src="assets/video/media26.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
@@ -452,7 +458,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">24</span><span class="cap">Closed-loop 평가 — human asset 배치 후 (scene-0051)</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
 
-<figure class="slide" id="s25" data-n="25" data-section="pipeline" data-group="2-4. Dynamic Human Asset">
+<figure class="slide" id="s25" data-n="25" data-section="human" data-group="2-4. Dynamic Human Asset">
   <div class="stage">
     <img src="assets/slides/25.jpg" alt="슬라이드 25: Asset 유무에 따른 DrivoR trajectory 변화 비교" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:-0.017%;top:25.000%;width:100.000%;height:25.000%" data-src="assets/video/media27.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:0.000%;top:62.937%;width:100.000%;height:25.000%" data-src="assets/video/media28.mp4" data-ctl="1" aria-label="영상 2 재생"><i class="badge">&#9654;</i></button>
@@ -460,7 +466,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">25</span><span class="cap">Asset 유무에 따른 DrivoR trajectory 변화 비교</span><button class="playall" data-n="25">영상 2개 동시 재생</button></figcaption>
 </figure>
 <h2 class="group" id="g26"><em>26</em>2-5. Novel-view Rendering</h2>
-<figure class="slide" id="s26" data-n="26" data-section="pipeline" data-group="2-5. Novel-view Rendering">
+<figure class="slide" id="s26" data-n="26" data-section="novel" data-group="2-5. Novel-view Rendering">
   <div class="stage">
     <img src="assets/slides/26.jpg" alt="슬라이드 26: 차량 시점으로 학습한 3DGS를 보도 시점으로 확장하는 시도" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -468,7 +474,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">26</span><span class="cap">차량 시점으로 학습한 3DGS를 보도 시점으로 확장하는 시도</span></figcaption>
 </figure>
 
-<figure class="slide" id="s27" data-n="27" data-section="pipeline" data-group="2-5. Novel-view Rendering">
+<figure class="slide" id="s27" data-n="27" data-section="novel" data-group="2-5. Novel-view Rendering">
   <div class="stage">
     <img src="assets/slides/27.jpg" alt="슬라이드 27: Semantic 오류와 out-of-distribution viewpoint에서의 한계" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:14.917%;top:53.147%;width:34.129%;height:34.129%" data-src="assets/video/media29.mp4" data-ctl="0" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
@@ -476,7 +482,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">27</span><span class="cap">Semantic 오류와 out-of-distribution viewpoint에서의 한계</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
 
-<figure class="slide" id="s28" data-n="28" data-section="pipeline" data-group="2-5. Novel-view Rendering">
+<figure class="slide" id="s28" data-n="28" data-section="novel" data-group="2-5. Novel-view Rendering">
   <div class="stage">
     <img src="assets/slides/28.jpg" alt="슬라이드 28: 1차 시도 — SD-Turbo 2D diffusion 복원과 hallucination 문제" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -484,7 +490,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">28</span><span class="cap">1차 시도 — SD-Turbo 2D diffusion 복원과 hallucination 문제</span></figcaption>
 </figure>
 
-<figure class="slide" id="s29" data-n="29" data-section="pipeline" data-group="2-5. Novel-view Rendering">
+<figure class="slide" id="s29" data-n="29" data-section="novel" data-group="2-5. Novel-view Rendering">
   <div class="stage">
     <img src="assets/slides/29.jpg" alt="슬라이드 29: 2차 시도 — GSFixer 기반 reference-guided video diffusion" loading="lazy" decoding="async" width="1921" height="1080">
     
@@ -492,7 +498,7 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">29</span><span class="cap">2차 시도 — GSFixer 기반 reference-guided video diffusion</span></figcaption>
 </figure>
 
-<figure class="slide" id="s30" data-n="30" data-section="pipeline" data-group="2-5. Novel-view Rendering">
+<figure class="slide" id="s30" data-n="30" data-section="novel" data-group="2-5. Novel-view Rendering">
   <div class="stage">
     <img src="assets/slides/30.jpg" alt="슬라이드 30: CAM_FRONT reference 기반 GSFix 입출력 비교" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:4.983%;top:33.483%;width:90.000%;height:53.333%" data-src="assets/video/media30.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
@@ -516,156 +522,148 @@ body.pres .pres-ui{display:flex;align-items:center;gap:6px;position:fixed;right:
   <figcaption><span class="num">32</span><span class="cap">Semantic Foam — GT / prediction segmentation 비교</span></figcaption>
 </figure>
 
-<figure class="slide" id="s33" data-n="33" data-section="future" data-group="3. Future Research Direction">
-  <div class="stage">
-    <img src="assets/slides/33.jpg" alt="슬라이드 33: Representation별 렌더링 품질 비교와 PSNR 지표" loading="lazy" decoding="async" width="1921" height="1080">
-    
-  </div>
-  <figcaption><span class="num">33</span><span class="cap">Representation별 렌더링 품질 비교와 PSNR 지표</span></figcaption>
-</figure>
-
 <figure class="slide" id="s34" data-n="34" data-section="future" data-group="3. Future Research Direction">
   <div class="stage">
-    <img src="assets/slides/34.jpg" alt="슬라이드 34: 3DGS / Semantic Foam / Mesh Splatting 렌더링 비교" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/34.jpg" alt="슬라이드 33: 3DGS / Semantic Foam / Mesh Splatting 렌더링 비교" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">34</span><span class="cap">3DGS / Semantic Foam / Mesh Splatting 렌더링 비교</span></figcaption>
+  <figcaption><span class="num">33</span><span class="cap">3DGS / Semantic Foam / Mesh Splatting 렌더링 비교</span></figcaption>
 </figure>
 
 <figure class="slide" id="s35" data-n="35" data-section="future" data-group="3. Future Research Direction">
   <div class="stage">
-    <img src="assets/slides/35.jpg" alt="슬라이드 35: Semantic Foam depth geometry 및 GUI 렌더링 결과" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/35.jpg" alt="슬라이드 34: Semantic Foam depth geometry 및 GUI 렌더링 결과" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:22.999%;top:15.194%;width:52.641%;height:39.176%" data-src="assets/video/media31.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button><button class="vid" style="left:22.952%;top:59.997%;width:52.641%;height:39.176%" data-src="assets/video/media32.mp4" data-ctl="1" aria-label="영상 2 재생"><i class="badge">&#9654;</i></button>
   </div>
-  <figcaption><span class="num">35</span><span class="cap">Semantic Foam depth geometry 및 GUI 렌더링 결과</span><button class="playall" data-n="35">영상 2개 동시 재생</button></figcaption>
+  <figcaption><span class="num">34</span><span class="cap">Semantic Foam depth geometry 및 GUI 렌더링 결과</span><button class="playall" data-n="35">영상 2개 동시 재생</button></figcaption>
 </figure>
-<h2 class="group" id="g36"><em>36</em>Appendix 표지</h2>
+<h2 class="group" id="g36"><em>35</em>Appendix 표지</h2>
 <figure class="slide" id="s36" data-n="36" data-section="appendix" data-group="Appendix 표지">
   <div class="stage">
-    <img src="assets/slides/36.jpg" alt="슬라이드 36: Appendix" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/36.jpg" alt="슬라이드 35: Appendix" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">36</span><span class="cap">Appendix</span></figcaption>
+  <figcaption><span class="num">35</span><span class="cap">Appendix</span></figcaption>
 </figure>
-<h2 class="group" id="g37"><em>37</em>A. HUGSIM</h2>
+<h2 class="group" id="g37"><em>36</em>A. HUGSIM</h2>
 <figure class="slide" id="s37" data-n="37" data-section="appendix" data-group="A. HUGSIM">
   <div class="stage">
-    <img src="assets/slides/37.jpg" alt="슬라이드 37: HUGSIM GUI scenario editing과 segmentation 모델 교체" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/37.jpg" alt="슬라이드 36: HUGSIM GUI scenario editing과 segmentation 모델 교체" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">37</span><span class="cap">HUGSIM GUI scenario editing과 segmentation 모델 교체</span></figcaption>
+  <figcaption><span class="num">36</span><span class="cap">HUGSIM GUI scenario editing과 segmentation 모델 교체</span></figcaption>
 </figure>
 
 <figure class="slide" id="s38" data-n="38" data-section="appendix" data-group="A. HUGSIM">
   <div class="stage">
-    <img src="assets/slides/38.jpg" alt="슬라이드 38: GUI 기반 시나리오 편집 및 AD algorithm 평가 결과" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/38.jpg" alt="슬라이드 37: GUI 기반 시나리오 편집 및 AD algorithm 평가 결과" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:11.706%;top:17.505%;width:74.943%;height:49.962%" data-src="assets/video/media1.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
   </div>
-  <figcaption><span class="num">38</span><span class="cap">GUI 기반 시나리오 편집 및 AD algorithm 평가 결과</span><span class="vcount">영상 1개</span></figcaption>
+  <figcaption><span class="num">37</span><span class="cap">GUI 기반 시나리오 편집 및 AD algorithm 평가 결과</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
 
 <figure class="slide" id="s39" data-n="39" data-section="appendix" data-group="A. HUGSIM">
   <div class="stage">
-    <img src="assets/slides/39.jpg" alt="슬라이드 39: 시뮬레이터–AD algorithm 연동 과정의 image debugging" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/39.jpg" alt="슬라이드 38: 시뮬레이터–AD algorithm 연동 과정의 image debugging" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">39</span><span class="cap">시뮬레이터–AD algorithm 연동 과정의 image debugging</span></figcaption>
+  <figcaption><span class="num">38</span><span class="cap">시뮬레이터–AD algorithm 연동 과정의 image debugging</span></figcaption>
 </figure>
-<h2 class="group" id="g40"><em>40</em>B. HUGSIM / DrivoR 연동</h2>
+<h2 class="group" id="g40"><em>39</em>B. HUGSIM / DrivoR 연동</h2>
 <figure class="slide" id="s40" data-n="40" data-section="appendix" data-group="B. HUGSIM / DrivoR 연동">
   <div class="stage">
-    <img src="assets/slides/40.jpg" alt="슬라이드 40: HUGSIM ↔ DrivoR 연동 파이프라인 구조" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/40.jpg" alt="슬라이드 39: HUGSIM ↔ DrivoR 연동 파이프라인 구조" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">40</span><span class="cap">HUGSIM ↔ DrivoR 연동 파이프라인 구조</span></figcaption>
+  <figcaption><span class="num">39</span><span class="cap">HUGSIM ↔ DrivoR 연동 파이프라인 구조</span></figcaption>
 </figure>
 
 <figure class="slide" id="s41" data-n="41" data-section="appendix" data-group="B. HUGSIM / DrivoR 연동">
   <div class="stage">
-    <img src="assets/slides/41.jpg" alt="슬라이드 41: scene-0038-extreme 연동 평가 영상 및 지표" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/41.jpg" alt="슬라이드 40: scene-0038-extreme 연동 평가 영상 및 지표" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:12.549%;top:20.945%;width:74.901%;height:49.934%" data-src="assets/video/media33.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
   </div>
-  <figcaption><span class="num">41</span><span class="cap">scene-0038-extreme 연동 평가 영상 및 지표</span><span class="vcount">영상 1개</span></figcaption>
+  <figcaption><span class="num">40</span><span class="cap">scene-0038-extreme 연동 평가 영상 및 지표</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
-<h2 class="group" id="g42"><em>42</em>C. Hierarchical 3DGS</h2>
+<h2 class="group" id="g42"><em>41</em>C. Hierarchical 3DGS</h2>
 <figure class="slide" id="s42" data-n="42" data-section="appendix" data-group="C. Hierarchical 3DGS">
   <div class="stage">
-    <img src="assets/slides/42.jpg" alt="슬라이드 42: Hierarchical 3DGS — 대규모 장면 렌더링과 데이터 구성" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/42.jpg" alt="슬라이드 41: Hierarchical 3DGS — 대규모 장면 렌더링과 데이터 구성" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">42</span><span class="cap">Hierarchical 3DGS — 대규모 장면 렌더링과 데이터 구성</span></figcaption>
+  <figcaption><span class="num">41</span><span class="cap">Hierarchical 3DGS — 대규모 장면 렌더링과 데이터 구성</span></figcaption>
 </figure>
 
 <figure class="slide" id="s43" data-n="43" data-section="appendix" data-group="C. Hierarchical 3DGS">
   <div class="stage">
-    <img src="assets/slides/43.jpg" alt="슬라이드 43: In-house 주행 데이터 기반 H-3DGS 결과 영상" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/43.jpg" alt="슬라이드 42: In-house 주행 데이터 기반 H-3DGS 결과 영상" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:0.000%;top:18.948%;width:100.000%;height:74.352%" data-src="assets/video/media34.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
   </div>
-  <figcaption><span class="num">43</span><span class="cap">In-house 주행 데이터 기반 H-3DGS 결과 영상</span><span class="vcount">영상 1개</span></figcaption>
+  <figcaption><span class="num">42</span><span class="cap">In-house 주행 데이터 기반 H-3DGS 결과 영상</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
-<h2 class="group" id="g44"><em>44</em>D. VLA 라스트마일 배송 로봇</h2>
+<h2 class="group" id="g44"><em>43</em>D. VLA 라스트마일 배송 로봇</h2>
 <figure class="slide" id="s44" data-n="44" data-section="appendix" data-group="D. VLA 라스트마일 배송 로봇">
   <div class="stage">
-    <img src="assets/slides/44.jpg" alt="슬라이드 44: OmniVLA 기반 라스트마일 배송 로봇의 map-based navigation" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/44.jpg" alt="슬라이드 43: OmniVLA 기반 라스트마일 배송 로봇의 map-based navigation" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">44</span><span class="cap">OmniVLA 기반 라스트마일 배송 로봇의 map-based navigation</span></figcaption>
+  <figcaption><span class="num">43</span><span class="cap">OmniVLA 기반 라스트마일 배송 로봇의 map-based navigation</span></figcaption>
 </figure>
 
 <figure class="slide" id="s45" data-n="45" data-section="appendix" data-group="D. VLA 라스트마일 배송 로봇">
   <div class="stage">
-    <img src="assets/slides/45.jpg" alt="슬라이드 45: 구축한 map-based navigation architecture" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/45.jpg" alt="슬라이드 44: 구축한 map-based navigation architecture" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">45</span><span class="cap">구축한 map-based navigation architecture</span></figcaption>
+  <figcaption><span class="num">44</span><span class="cap">구축한 map-based navigation architecture</span></figcaption>
 </figure>
 
 <figure class="slide" id="s46" data-n="46" data-section="appendix" data-group="D. VLA 라스트마일 배송 로봇">
   <div class="stage">
-    <img src="assets/slides/46.jpg" alt="슬라이드 46: OmniVLA-Edge fine-tuning — trajectory 생성 결과" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/46.jpg" alt="슬라이드 45: OmniVLA-Edge fine-tuning — trajectory 생성 결과" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:0.000%;top:19.731%;width:100.000%;height:64.421%" data-src="assets/video/media35.mp4" data-ctl="1" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
   </div>
-  <figcaption><span class="num">46</span><span class="cap">OmniVLA-Edge fine-tuning — trajectory 생성 결과</span><span class="vcount">영상 1개</span></figcaption>
+  <figcaption><span class="num">45</span><span class="cap">OmniVLA-Edge fine-tuning — trajectory 생성 결과</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
-<h2 class="group" id="g47"><em>47</em>E. Dataset 구축 파이프라인</h2>
+<h2 class="group" id="g47"><em>46</em>E. Dataset 구축 파이프라인</h2>
 <figure class="slide" id="s47" data-n="47" data-section="appendix" data-group="E. Dataset 구축 파이프라인">
   <div class="stage">
-    <img src="assets/slides/47.jpg" alt="슬라이드 47: OSM 기반 ride 선별과 OSRM segment 자동 선별 파이프라인" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/47.jpg" alt="슬라이드 46: OSM 기반 ride 선별과 OSRM segment 자동 선별 파이프라인" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">47</span><span class="cap">OSM 기반 ride 선별과 OSRM segment 자동 선별 파이프라인</span></figcaption>
+  <figcaption><span class="num">46</span><span class="cap">OSM 기반 ride 선별과 OSRM segment 자동 선별 파이프라인</span></figcaption>
 </figure>
 
 <figure class="slide" id="s48" data-n="48" data-section="appendix" data-group="E. Dataset 구축 파이프라인">
   <div class="stage">
-    <img src="assets/slides/48.jpg" alt="슬라이드 48: FrodoBot Mini SDK 기반 데이터 수집 환경 구축" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/48.jpg" alt="슬라이드 47: FrodoBot Mini SDK 기반 데이터 수집 환경 구축" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:73.911%;top:57.407%;width:23.943%;height:27.275%" data-src="assets/video/media36.mp4" data-ctl="0" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
   </div>
-  <figcaption><span class="num">48</span><span class="cap">FrodoBot Mini SDK 기반 데이터 수집 환경 구축</span><span class="vcount">영상 1개</span></figcaption>
+  <figcaption><span class="num">47</span><span class="cap">FrodoBot Mini SDK 기반 데이터 수집 환경 구축</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
 
 <figure class="slide" id="s49" data-n="49" data-section="appendix" data-group="E. Dataset 구축 파이프라인">
   <div class="stage">
-    <img src="assets/slides/49.jpg" alt="슬라이드 49: 다양한 환경에서 수집한 controller / GPS·IMU 데이터" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/49.jpg" alt="슬라이드 48: 다양한 환경에서 수집한 controller / GPS·IMU 데이터" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">49</span><span class="cap">다양한 환경에서 수집한 controller / GPS·IMU 데이터</span></figcaption>
+  <figcaption><span class="num">48</span><span class="cap">다양한 환경에서 수집한 controller / GPS·IMU 데이터</span></figcaption>
 </figure>
-<h2 class="group" id="g50"><em>50</em>F. 자작자동차 대회</h2>
+<h2 class="group" id="g50"><em>49</em>F. 자작자동차 대회</h2>
 <figure class="slide" id="s50" data-n="50" data-section="appendix" data-group="F. 자작자동차 대회">
   <div class="stage">
-    <img src="assets/slides/50.jpg" alt="슬라이드 50: 2024 대학생 스마트 E-모빌리티 경진대회 — 배선 설계 및 BMS 교체" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/50.jpg" alt="슬라이드 49: 2024 대학생 스마트 E-모빌리티 경진대회 — 배선 설계 및 BMS 교체" loading="lazy" decoding="async" width="1921" height="1080">
     
   </div>
-  <figcaption><span class="num">50</span><span class="cap">2024 대학생 스마트 E-모빌리티 경진대회 — 배선 설계 및 BMS 교체</span></figcaption>
+  <figcaption><span class="num">49</span><span class="cap">2024 대학생 스마트 E-모빌리티 경진대회 — 배선 설계 및 BMS 교체</span></figcaption>
 </figure>
 
 <figure class="slide" id="s51" data-n="51" data-section="appendix" data-group="F. 자작자동차 대회">
   <div class="stage">
-    <img src="assets/slides/51.jpg" alt="슬라이드 51: 2025 창작 모빌리티 경진대회 무인모빌리티 부문 — ERP 전장 및 MORAI 평가" loading="lazy" decoding="async" width="1921" height="1080">
+    <img src="assets/slides/51.jpg" alt="슬라이드 50: 2025 창작 모빌리티 경진대회 무인모빌리티 부문 — ERP 전장 및 MORAI 평가" loading="lazy" decoding="async" width="1921" height="1080">
     <button class="vid" style="left:62.392%;top:11.777%;width:35.364%;height:39.293%" data-src="assets/video/media37.mp4" data-ctl="0" aria-label="영상 1 재생"><i class="badge">&#9654;</i></button>
   </div>
-  <figcaption><span class="num">51</span><span class="cap">2025 창작 모빌리티 경진대회 무인모빌리티 부문 — ERP 전장 및 MORAI 평가</span><span class="vcount">영상 1개</span></figcaption>
+  <figcaption><span class="num">50</span><span class="cap">2025 창작 모빌리티 경진대회 무인모빌리티 부문 — ERP 전장 및 MORAI 평가</span><span class="vcount">영상 1개</span></figcaption>
 </figure>
 </main>
 
